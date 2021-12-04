@@ -43,6 +43,8 @@ function validate(nameValue, urlValue) {
 
 // Building Bookmarks DOM
 function buildBookmarks() {
+  // Removing all bookmarks
+  bookmarksContainer.textContent = " ";
   // Building Items
   bookmarks.forEach((bookmark) => {
     const { name, url } = bookmark;
@@ -86,14 +88,27 @@ function fetchBookmarks() {
   } else {
     // Create bookmarks array in local storage
     bookmarks = [
-      {
-        name: "Riam",
-        url: "riam.com",
-      },
+      // {
+      //   name: "",
+      //   url: "",
+      // },
     ];
     localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
   }
   buildBookmarks();
+}
+
+// Delete Bookmark
+function deleteBookmark(url) {
+  // console.log("delete URL", url);
+  bookmarks.forEach((bookmark, i) => {
+    if (bookmarks.url === url) {
+      bookmarks.splice(i, 1);
+    }
+  });
+  // Update bookmarks array in local storage
+  localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+  fetchBookmarks();
 }
 // Manage Data from form input
 function storeBookmark(e) {
