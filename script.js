@@ -48,7 +48,6 @@ function buildBookmarks() {
   // Building Items
   bookmarks.forEach((bookmark) => {
     const { name, url } = bookmark;
-    // console.log(name, url);
 
     // Item
     const item = document.createElement("div");
@@ -57,8 +56,6 @@ function buildBookmarks() {
     const closeIcon = document.createElement("i");
     closeIcon.classList.add("fas", "fa-times");
     closeIcon.setAttribute("title", "Delete Bookmark");
-
-    // here is the bug
     closeIcon.setAttribute("onclick", `deleteBookmark('${url}')`);
 
     // Link Container
@@ -115,7 +112,6 @@ function storeBookmark(e) {
   if (!urlValue.includes("http://", "https://")) {
     urlValue = `https://${urlValue}`;
   }
-  // console.log(nameValue, urlValue);
   if (!validate(nameValue, urlValue)) {
     return false;
   }
@@ -124,7 +120,6 @@ function storeBookmark(e) {
     url: urlValue,
   };
   bookmarks.push(bookmark);
-  // console.log(JSON.stringify(bookmarks));
   localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
   fetchBookmarks();
   bookmarkForm.reset();

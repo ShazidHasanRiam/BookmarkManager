@@ -5,7 +5,6 @@
     --secondary-color: #1e8ad3;
     --accent-color: #e8a707;
     --border-radius: 6px;
-
 }
 
 html {
@@ -87,16 +86,10 @@ h1:hover:before {
 
 }
 
-/* img {
-    height: 30px;
-    width: 30px;
-} */
-
 a {
     font-size: 20px;
     font-weight: bold;
     text-transform: uppercase;
-    /* text-decoration: none; */
     color: whitesmoke;
 }
 
@@ -138,14 +131,12 @@ a:active {
     left: 0;
     right: 0;
     bottom: 0;
-
 }
 
 .show-modal {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border-radius: var(--border-radius); */
 }
 
 .modal {
@@ -230,8 +221,6 @@ button {
     font-weight: 700;
     font-size: medium;
     letter-spacing: 1px;
-
-
 }
 
 button:hover {
