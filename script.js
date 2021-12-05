@@ -44,7 +44,7 @@ function validate(nameValue, urlValue) {
 // Building Bookmarks DOM
 function buildBookmarks() {
   // Removing all bookmarks
-  bookmarksContainer.textContent = " ";
+  bookmarksContainer.textContent = "";
   // Building Items
   bookmarks.forEach((bookmark) => {
     const { name, url } = bookmark;
@@ -57,7 +57,10 @@ function buildBookmarks() {
     const closeIcon = document.createElement("i");
     closeIcon.classList.add("fas", "fa-times");
     closeIcon.setAttribute("title", "Delete Bookmark");
+
+    // here is the bug
     closeIcon.setAttribute("onclick", `deleteBookmark('${url}')`);
+
     // Link Container
     const linkInfo = document.createElement("div");
     linkInfo.classList.add("name");
@@ -87,12 +90,7 @@ function fetchBookmarks() {
     bookmarks = JSON.parse(localStorage.getItem("bookmarks"));
   } else {
     // Create bookmarks array in local storage
-    bookmarks = [
-      // {
-      //   name: "",
-      //   url: "",
-      // },
-    ];
+    bookmarks = [];
     localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
   }
   buildBookmarks();
@@ -100,9 +98,8 @@ function fetchBookmarks() {
 
 // Delete Bookmark
 function deleteBookmark(url) {
-  // console.log("delete URL", url);
   bookmarks.forEach((bookmark, i) => {
-    if (bookmarks.url === url) {
+    if (bookmark.url === url) {
       bookmarks.splice(i, 1);
     }
   });
